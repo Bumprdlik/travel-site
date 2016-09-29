@@ -22,7 +22,7 @@ class StickyHeader {
   }
 
   addSmoothScrolling() {
-  	this.headerLinks.smoothScroll();
+    this.headerLinks.smoothScroll();
   }
 
   createHeaderWaypoint() {
@@ -40,35 +40,33 @@ class StickyHeader {
   }
 
   createPageSectionWaypoints() {
-  	var that = this;
-  	console.log(this);
-  	this.pageSections.each(function() {
-  		var currentPageSection = this;
-  		console.log(this);
-  		new Waypoint({
-  			element: currentPageSection,
-  			handler: function(direction) {
-  				if (direction == "down") {
-  					var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
-  					that.headerLinks.removeClass("is-current-link");
-  					$(matchingHeaderLink).addClass("is-current-link");
-  				}
-  			},
-  			offset: "18%"
-  		});
+    var that = this;
+    this.pageSections.each(function() {
+      var currentPageSection = this;
+      new Waypoint({
+        element: currentPageSection,
+        handler: function(direction) {
+          if (direction == "down") {
+            var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
+            that.headerLinks.removeClass("is-current-link");
+            $(matchingHeaderLink).addClass("is-current-link");
+          }
+        },
+        offset: "18%"
+      });
 
-  		new Waypoint({
-  			element: currentPageSection,
-  			handler: function(direction) {
-  				if (direction == "up") {
-  					var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
-  					that.headerLinks.removeClass("is-current-link");
-  					$(matchingHeaderLink).addClass("is-current-link");
-  				}
-  			},
-  			offset: "-40%"
-  		});
-  	});
+      new Waypoint({
+        element: currentPageSection,
+        handler: function(direction) {
+          if (direction == "up") {
+            var matchingHeaderLink = currentPageSection.getAttribute("data-matching-link");
+            that.headerLinks.removeClass("is-current-link");
+            $(matchingHeaderLink).addClass("is-current-link");
+          }
+        },
+        offset: "-40%"
+      });
+    });
   }
 }
 
